@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <title>SL Pixels</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+</head>
+
+<body class="form-body">
+
+  <div class="row logo-container">
+
+
+    <div class="col-lg-4">
+      <img src="/images/logo.png" class="logo container" alt="logo-img">
+    </div>
+    <div class="col-lg-6">
+      <h2 class="logo-heading">SL Pixels</h2>
+    </div>
+    <div class="col-lg-2 logout-button">
+      <a href="/logout"><button role="button" class=" btn btn-outline-dark">Logout</button></a>
+    </div>
+  </div>
+
+  <div class="container form  ">
+    <form action="/form2" method="post" class="form-portion" autocomplete="off" enctype="multipart/form-data">
+      <div class="form-group form-data">
+        <label for="formGroupExampleInput">Key</label>
+        <input type="password" class="form-control form-input" name="key">
+      </div>
+      <div class="form-group form-data">
+        <label for="formGroupExampleInput">Image Source (Logo)</label>
+        <select class="form-control form-input " style="height:50px" onchange="yesnoCheck(this);" name="logo_source">
+          <option selected value="">No logo</option>
+          <option value="url">Enter URL</option>
+          <option value="img">Add Image</option>
+        </select>
+      </div>
+
+      <div id="input-img" class="form-group form-data" style="display: none;">
+        <label for="formFileSm" class="form-label">Add image (jpg/png)</label>
+        <input name="img" class="form-control form-file-input form-control-sm" id="formFileSm" type="file" accept=".jpg,.png" />
+      </div>
+
+      <div id="input-url" class="form-group form-data" style="display: none;">
+        <label for="formGroupExampleInput">Image_url</label>
+        <input type="text" class="form-control form-input" name="url">
+      </div>
+
+      <div class="form-group form-data">
+        <label for="formGroupExampleInput">Image Type</label>
+        <select class="form-control form-input " style="height:50px" name="image_type">
+          <option selected value="square">select</option>
+          <option value="square">Square</option>
+          <option value="rect_h">Rectangular Horizontal</option>
+          <!-- <option value="rect_v">Rectangular Vertical</option> -->
+        </select>
+      </div>
+      <div class="form-group form-data">
+        <label for="formGroupExampleInput2">Width of logo (px)</label>
+        <input type="text" class="form-control form-input" name="w_logo">
+      </div>
+      <div class="form-group form-data">
+        <label for="formGroupExampleInput2">Height of logo (px)</label>
+        <input type="text" class="form-control form-input" name="h_logo">
+      </div>
+      <div class="form-group form-data">
+        <label for="formGroupExampleInput2">Organisation Name (35 characters max)</label>
+        <input type="text" class="form-control form-input" name="logo">
+      </div>
+
+      <div class="form-group form-data">
+        <label for="formGroupExampleInput">Choose Footer</label>
+        <select class="form-control form-input " style="height:50px" name="footer_url">
+          <option selected value="default">select</option>
+          <option value="https://json.mycareerlift.com/pixels/templete2-04_03.gif">Zoom</option>
+          <option value="https://json.mycareerlift.com/pixels/templete2-02_03.gif">Google Meet</option>
+        </select>
+      </div>
+
+      <div class="form-group form-data">
+        <label for="formGroupExampleInput2">Meeting ID/URL</label>
+        <input type="text" class="form-control form-input" name="id">
+      </div>
+      <div class="form-group form-data">
+        <label for="formGroupExampleInput2">Password</label>
+        <input type="text" class="form-control form-input" name="password">
+      </div>
+      <button type="submit" class="form-button btn btn-outline-dark">Submit</button>
+      <div class="form-group form-data">
+        <label>*dimensions for rectangular logo area are (394 * 182)px. Please resize your image if it's more rectangular (grater than 3:1)</label>
+      </div>
+
+    </form>
+  </div>
+  <% if(flag === 0){ %>
+  <script type="text/javascript">
+    alert("Wrong Key!!");
+  </script>
+  <% } %>
+
+  <% if(url === " "){ %>
+
+  <% }else{ %>
+  <div class="container form">
+    <label class="heading"> Response </label>
+    <div class="row">
+      <div class="col">
+        <label style="padding-right:10px" class="heading">Date </label>
+        <span> <%= date %></span>
+      </div>
+      <div style="text-align:center" class="col">
+        <!-- <a href="<%= url %>" Download="img.png" target="_blank">
+        <button type="button" class=" btn btn-outline-dark">Download</button>
+      </a> -->
+        <img src="<%= url %>" alt="">
+      </div>
+    </div>
+
+  </div>
+  <% } %>
+
+<script src="/js/custom.js" charset="utf-8"></script>
+
+</body>
+
+</html>
